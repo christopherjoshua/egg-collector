@@ -8,12 +8,14 @@ using Collector.Basket;
 using Collector.Movement;
 using Collector.Score;
 using Collector.Timer;
+using Collector.EggGenerator;
 
 namespace Collector.Gameplay
 {
     public class GameplayLauncher : BaseLauncher<GameplayLauncher, GameplayView>
     {
         private BasketController _basket;
+        private EggGeneratorController _egg;
         private MovementController _movement;
         private ScoreController _score;
         private TimerController _timer;
@@ -39,6 +41,7 @@ namespace Collector.Gameplay
             return new IController[]
                {
                 new MovementController(),
+                new EggGeneratorController(),
                 new BasketController(),
                 new TimerController(),
                 new ScoreController(),
@@ -53,6 +56,7 @@ namespace Collector.Gameplay
         protected override IEnumerator InitSceneObject()
         {
             _movement.SetView(_view.MovementView);
+            _egg.SetView(_view.EggGeneratorView);
             _basket.SetView(_view.BasketView);
             _timer.SetView(_view.TimerView);
             _score.SetView(_view.ScoreView);

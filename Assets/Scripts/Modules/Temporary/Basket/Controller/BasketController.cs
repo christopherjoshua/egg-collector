@@ -42,6 +42,12 @@ namespace Collector.Basket
                 }
             });
             _view.InitializeLimit(_inputs.GetInputsSetting());
+            _view.OnFailCatchEgg.AddListener(OnFailCatchEgg);
+        }
+
+        private void OnFailCatchEgg(GameObject egg)
+        {
+            Debug.Log("Fail to catch egg");
         }
     }
 }

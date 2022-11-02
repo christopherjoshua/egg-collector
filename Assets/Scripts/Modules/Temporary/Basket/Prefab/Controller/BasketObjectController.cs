@@ -1,3 +1,4 @@
+using Collector.EggGenerator;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Collector.Basket
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!collision.name.Contains("Limit"))
+                return;
             bool isCollidedLeft = collision.GetComponent<Collider2D>().transform.position.x < gameObject.transform.position.x;
             if (isCollidedLeft)
             {

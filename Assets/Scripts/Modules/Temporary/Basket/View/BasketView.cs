@@ -6,6 +6,7 @@ using Agate.MVC.Base;
 using static Types;
 using System;
 using System.Linq;
+using UnityEngine.Events;
 
 namespace Collector.Basket
 {
@@ -15,8 +16,9 @@ namespace Collector.Basket
         private BasketObjectController _basketObject;
         [SerializeField]
         private float _baseSpeed = 1;
-
         private List<float> _speedList = new List<float>();
+
+        public UnityEvent<GameObject> OnFailCatchEgg;
 
         public void OnDirectionKeyPressed(Direction direction)
         {
