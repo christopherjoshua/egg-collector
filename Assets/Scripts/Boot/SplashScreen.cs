@@ -4,15 +4,18 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 
-public class SplashScreen : BaseSplash<SplashScreen>
+namespace Collector.Boot
 {
-    protected override ILoad GetLoader()
+    public class SplashScreen : BaseSplash<SplashScreen>
     {
-        return SceneLoader.Instance;
-    }
+        protected override ILoad GetLoader()
+        {
+            return SceneLoader.Instance;
+        }
 
-    protected override IMain GetMain()
-    {
-        return GameMain.Instance;
+        protected override IMain GetMain()
+        {
+            return GameMain.Instance;
+        }
     }
 }

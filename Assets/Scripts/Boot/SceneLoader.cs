@@ -4,7 +4,10 @@ using UnityEngine;
 using Agate.MVC.Core;
 using Agate.MVC.Base;
 
-public class SceneLoader : BaseLoader<SceneLoader>
+namespace Collector.Boot
 {
-    protected override string SplashScene => "SplashScreen";
+    public class SceneLoader : BaseLoader<SceneLoader>
+    {
+        protected override string SplashScene => "SplashScreen";
+    }
 }

@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using Collector.Inputs;
 
-public class GameMain : BaseMain<GameMain>, IMain
+namespace Collector.Boot
 {
-    protected override IConnector[] GetConnectors()
+    public class GameMain : BaseMain<GameMain>, IMain
     {
-        return null;
-    }
+        private InputsController _inputsEditor;
+        private SaveLoadController _saveLoad;
+        protected override IConnector[] GetConnectors()
+        {
+            return null;
+        }
 
-    protected override IController[] GetDependencies()
-    {
-        return null;
-    }
+        protected override IController[] GetDependencies()
+        {
+            return new IController[]
+            {
+                new InputsController(),
+                new SaveLoadController(),
+            };
+        }
 
-    protected override IEnumerator StartInit()
-    {
-        yield return null;
+        protected override IEnumerator StartInit()
+        {
+            yield return null;
+        }
     }
 }

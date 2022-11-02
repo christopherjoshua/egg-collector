@@ -4,13 +4,17 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 
-public class TimerModel : BaseModel, ITimerModel
+namespace Collector.Timer
 {
-    public float TimeRemaining { get; private set; }
 
-    public void SetTime(float time)
+    public class TimerModel : BaseModel, ITimerModel
     {
-        TimeRemaining = time;
-        SetDataAsDirty();
+        public float TimeRemaining { get; private set; }
+
+        public void SetTime(float time)
+        {
+            TimeRemaining = time;
+            SetDataAsDirty();
+        }
     }
 }

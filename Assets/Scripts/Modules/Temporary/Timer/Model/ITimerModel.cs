@@ -4,7 +4,11 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 
-public interface ITimerModel : IBaseModel
+namespace Collector.Timer
 {
-    public float TimeRemaining { get; }
+
+    public interface ITimerModel : IBaseModel
+    {
+        public float TimeRemaining { get; }
+    }
 }

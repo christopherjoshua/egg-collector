@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
-
-public abstract class SceneLauncher<TController, TView> : BaseLauncher<TController, TView>
-        where TController : BaseLauncher<TController, TView>
-        where TView : View
+namespace Collector.Boot
 {
-    protected override ILoad GetLoader()
+    public abstract class SceneLauncher<TController, TView> : BaseLauncher<TController, TView>
+            where TController : BaseLauncher<TController, TView>
+            where TView : View
     {
-        return SceneLoader.Instance;
+        protected override ILoad GetLoader()
+        {
+            return SceneLoader.Instance;
+        }
+        protected override IMain GetMain()
+        {
+            return GameMain.Instance;
+        }
+        protected override ISplash GetSplash()
+        {
+            return SplashScreen.Instance;
+        }
     }
-    protected override IMain GetMain()
-    {
-        return GameMain.Instance;
-    }
-    protected override ISplash GetSplash()
-    {
-        return SplashScreen.Instance;
-    }
+
 }

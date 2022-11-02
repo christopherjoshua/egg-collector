@@ -6,34 +6,37 @@ using Agate.MVC.Core;
 using UnityEngine.Events;
 using TMPro;
 
-public class TimerView : ObjectView<ITimerModel>
+namespace Collector.Timer
 {
-    [SerializeField]
-    private TMP_Text _timerText;
-
-    public bool IsStarted;
-
-    public float InitialTime;
-
-    public UnityAction<float> OnTimeUpdated;
-
-    protected override void InitRenderModel(ITimerModel model)
+    public class TimerView : ObjectView<ITimerModel>
     {
-        return;
-    }
+        [SerializeField]
+        private TMP_Text _timerText;
 
-    protected override void UpdateRenderModel(ITimerModel model)
-    {
-        int remainingTimeInt = (int)Mathf.Ceil(model.TimeRemaining);
-        _timerText.text = string.Format("{0}{1}", remainingTimeInt / 10, remainingTimeInt % 10);
-        return;
-    }
+        public bool IsStarted;
 
-    private void Update()
-    {
-        if (IsStarted)
+        public float InitialTime;
+
+        public UnityAction<float> OnTimeUpdated;
+
+        protected override void InitRenderModel(ITimerModel model)
         {
-            OnTimeUpdated.Invoke(Time.deltaTime);
+            return;
+        }
+
+        protected override void UpdateRenderModel(ITimerModel model)
+        {
+            int remainingTimeInt = (int)Mathf.Ceil(model.TimeRemaining);
+            _timerText.text = string.Format("{0}{1}", remainingTimeInt / 10, remainingTimeInt % 10);
+            return;
+        }
+
+        private void Update()
+        {
+            if (IsStarted)
+            {
+                OnTimeUpdated.Invoke(Time.deltaTime);
+            }
         }
     }
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 
-public interface IScoreModel : IBaseModel
+namespace Collector.Score
 {
-    public int Score { get; }
-    public int Combo { get; }
+    public interface IScoreModel : IBaseModel
+    {
+        public int Score { get; }
+        public int Combo { get; }
 
-    public int AddScore { get; }
-    public int BonusScore { get; }
+        public int AddScore { get; }
+        public int BonusScore { get; }
+    }
 }

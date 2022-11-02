@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TimerTest.unity
-    guid: f79c546de7b9e604ea693cbd3351205f
+    path: Assets/Scenes/Home.unity
+    guid: 1e897ee189254b04a839fb2afaaf06d1
+  - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: d6ee286ab568ec149a8729e9a529289b
   - enabled: 1
     path: Assets/Scenes/SplashScreen.unity
     guid: 7571b5beef6a8f14689496fc069114d6
