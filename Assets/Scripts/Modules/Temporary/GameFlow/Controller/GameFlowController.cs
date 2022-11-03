@@ -28,16 +28,23 @@ namespace Collector.GameFlow
 
         public void OnGetObject(OnGetObjectMessage message)
         {
-            switch (message.ObjectType)
+            if(message.CatcherType == "Player")
             {
-                case "Player":
+                if (message.ObjectType == "Bomb")
+                {
+                    OnTimeout();
+                }
+                else
+                {
                     OnScoreUp();
-                    break;
-                case "Limit":
+                }
+            }
+            else if(message.CatcherType == "Limit")
+            {
+                if (message.ObjectType == "Egg")
+                {
                     OnComboDown();
-                    break;
-                default:
-                    break;
+                }
             }
         }
 

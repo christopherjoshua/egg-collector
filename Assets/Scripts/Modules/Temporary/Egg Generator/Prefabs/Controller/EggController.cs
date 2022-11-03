@@ -16,7 +16,7 @@ namespace Collector.EggGenerator
         private Transform _parent;
         public Transform Parent => _parent ?? transform.parent;
 
-        public UnityEvent<string> OnEggCollided;
+        public UnityEvent<string, string> OnEggCollided;
 
         public List<string> TagCollidable;
 
@@ -49,7 +49,7 @@ namespace Collector.EggGenerator
             // and then send message depending on the collider tag
             if (!TagCollidable.Contains(collision.tag))
                 return;
-            OnEggCollided?.Invoke(collision.tag);
+            OnEggCollided?.Invoke(collision.tag, gameObject.tag);
 
             SetEggSpeed(0f);
             SetEggActive(false);

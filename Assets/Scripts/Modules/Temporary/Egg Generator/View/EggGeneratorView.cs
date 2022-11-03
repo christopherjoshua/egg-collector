@@ -9,19 +9,56 @@ namespace Collector.EggGenerator
 {
     public class EggGeneratorView : ObjectView<IEggGeneratorModel>
     {
+        [Header("Game Objects")]
         [SerializeField]
         private EggController _eggPrefab;
         public EggController EggPrefab => _eggPrefab;
         [SerializeField]
+        private BombController _bombPrefab;
+        public BombController BombPrefab => _bombPrefab;
+        [SerializeField]
         private Transform _eggContainer;
         public Transform EggContainer => _eggContainer;
 
-        public UnityEvent OnTimeToGenerateEgg;
+
+        [Header("Generator Properties")]
+        [SerializeField]
+        private int _generatorCount;
+        public int GeneratorCount => _generatorCount;
+        private bool _generatorStarted;
+
+        [Header("Egg Properties")]
+        [SerializeField]
+        private float _minEggSpeed;
+        [SerializeField]
+        private float _maxEggSpeed;
+        [SerializeField]
+        private float _minInitialDelay;
+        [SerializeField]
+        private float _maxInitialDelay;
+        [SerializeField]
+        private float _minDelay;
+        [SerializeField]
+        private float _maxDelay;
+        [SerializeField]
+        private float _additionalDelay;
+        public float MinEggSpeed => _minEggSpeed;
+        public float MaxEggSpeed => _maxEggSpeed;
+        public float MinInitialDelay => _minInitialDelay;
+        public float MaxInitialDelay => _maxInitialDelay;
+        public float MinDelay => _minDelay;
+        public float MaxDelay => _maxDelay;
+        public float AdditionalDelay => _additionalDelay;
+
+
+        [Header("Bomb Properties")]
+        [SerializeField]
+        private float _bombPercentRate;
+        public float BombPercentRate => _bombPercentRate;
 
         private List<Coroutine> _generators = new List<Coroutine>();
 
-        private float timing = 5;
-        private float currtime = 5;
+        public UnityEvent OnTimeToGenerateEgg;
 
         protected override void InitRenderModel(IEggGeneratorModel model)
         {
@@ -45,17 +82,19 @@ namespace Collector.EggGenerator
 
         public void StartGenerators()
         {
-            for (int q = 0; q < 3; q++)
+            for (int q = 0; q < GeneratorCount; q++)
             {
-                float delay = Random.Range(1.5f, 3f);
+                float delay = Random.Range(MinInitialDelay, MaxInitialDelay) + (AdditionalDelay * q);
                 Coroutine _eggGeneration = StartCoroutine(EggGeneratorCoroutine(delay, () => { OnTimeToGenerateEgg.Invoke(); }));
                 _generators.Add(_eggGeneration);
             }
+            _generatorStarted = true;
         }
 
         public void StopGenerators()
         {
-            foreach(Coroutine generator in _generators)
+            _generatorStarted = false;
+            foreach (Coroutine generator in _generators)
             {
                 StopCoroutine(generator);
             }
@@ -65,10 +104,10 @@ namespace Collector.EggGenerator
         private IEnumerator EggGeneratorCoroutine(float delayDuration, UnityAction callback = null)
         {
             float delay = delayDuration;
-            while (true)
+            while (_generatorStarted)
             {
                 yield return new WaitForSeconds(delay);
-                delay = Random.Range(1.5f, 3f);
+                delay = Random.Range(MinDelay, MaxDelay);
                 callback?.Invoke();
             }
         }

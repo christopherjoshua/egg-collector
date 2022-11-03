@@ -21,9 +21,11 @@ public class Types
 
     public struct OnGetObjectMessage
     {
+        public string CatcherType;
         public string ObjectType;
-        public OnGetObjectMessage(string objectType)
+        public OnGetObjectMessage(string catcherType, string objectType)
         {
+            CatcherType = catcherType;
             ObjectType = objectType;
         }
     }

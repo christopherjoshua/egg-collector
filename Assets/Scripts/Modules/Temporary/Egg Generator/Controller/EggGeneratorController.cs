@@ -16,37 +16,47 @@ namespace Collector.EggGenerator
             view.OnTimeToGenerateEgg.AddListener(CreateOrGetEggs);
             view.StartGenerators();
         }
-
         public void CreateOrGetEggs()
         {
             bool reuseEgg = false;
+            bool createBomb = Random.Range(0, 100) < _view.BombPercentRate;
             List<EggController> eggList = _model.EggList;
+            // set small chance to use bomb instead
             for (int q = 0; q < eggList.Count; q++)
             {
-                if(!eggList[q].IsActive)
+                bool isEggBomb = eggList[q].GetComponent<BombController>() == null ? false : true;
+                if (!eggList[q].IsActive && createBomb == isEggBomb)
                 {
                     reuseEgg = true;
                     eggList[q].SetRandomizePosition();
                     eggList[q].SetEggActive(true);
-                    eggList[q].SetEggSpeed(Random.Range(2f, 2.5f));
+                    eggList[q].SetEggSpeed(Random.Range(_view.MinEggSpeed, _view.MaxEggSpeed));
                     break;
                 }
             }
             if(!reuseEgg)
             {
-                EggController newEgg = EggController.Instantiate(_view.EggPrefab, _view.EggContainer);
+                EggController newEgg;
+                if (createBomb)
+                {
+                    newEgg = BombController.Instantiate(_view.BombPrefab, _view.EggContainer);
+                }
+                else
+                {
+                    newEgg = EggController.Instantiate(_view.EggPrefab, _view.EggContainer);
+                }
+                newEgg.OnEggCollided.AddListener(SendCollidedMessage);
                 newEgg.SetRandomizePosition();
                 newEgg.SetEggActive(true);
-                newEgg.SetEggSpeed(Random.Range(2f, 2.5f));
-                newEgg.OnEggCollided.AddListener(SendCollidedMessage);
+                newEgg.SetEggSpeed(Random.Range(_view.MinEggSpeed, _view.MaxEggSpeed));
                 eggList.Add(newEgg);
             }
             _model.UpdateEggList(eggList);
         }
 
-        public void SendCollidedMessage(string type)
+        public void SendCollidedMessage(string catcherType, string objectType)
         {
-            Publish<OnGetObjectMessage>(new OnGetObjectMessage(type));
+            Publish<OnGetObjectMessage>(new OnGetObjectMessage(catcherType, objectType));
         }
 
         public void StopGenerators()

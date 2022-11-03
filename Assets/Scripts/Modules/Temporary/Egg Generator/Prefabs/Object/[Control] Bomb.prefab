@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 7012610335958431654}
   - component: {fileID: 7012610335958431655}
   - component: {fileID: 7012610335958431656}
-  - component: {fileID: 3745164636507672546}
-  - component: {fileID: 5873597002244585703}
+  - component: {fileID: 7053282608742970282}
+  - component: {fileID: 5629218339193561312}
   m_Layer: 5
-  m_Name: '[Control] Egg'
-  m_TagString: Egg
+  m_Name: '[Control] Bomb'
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2098503378837704349, guid: 2ab6873f4e7a3554793b0e75c1de1408, type: 3}
+  m_Sprite: {fileID: 8749572571724475171, guid: abcf345417aed0b44a1512f002994d5e, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -99,26 +99,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3745164636507672546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7012610335958431653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366f489fac4b78a4aaef166284eb1101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnEggCollided:
-    m_PersistentCalls:
-      m_Calls: []
-  TagCollidable:
-  - Player
-  - Limit
---- !u!70 &5873597002244585703
-CapsuleCollider2D:
+--- !u!58 &7053282608742970282
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,6 +112,24 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -18}
-  m_Size: {x: 30, y: 15}
-  m_Direction: 1
+  m_Offset: {x: -4, y: -7}
+  serializedVersion: 2
+  m_Radius: 20
+--- !u!114 &5629218339193561312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7012610335958431653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc28b26b1c8a6f4688ee9d20af33f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEggCollided:
+    m_PersistentCalls:
+      m_Calls: []
+  TagCollidable:
+  - Player
+  - Limit
