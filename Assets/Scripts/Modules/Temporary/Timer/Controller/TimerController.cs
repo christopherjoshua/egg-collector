@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using static Types;
 
 namespace Collector.Timer
 {
@@ -31,12 +32,7 @@ namespace Collector.Timer
 
         private void GameTimeout()
         {
-            Publish<TimerTimeOutMessage>(new TimerTimeOutMessage());
-        }
-
-        public struct TimerTimeOutMessage
-        {
-
+            Publish<OnTimerTimeoutMessage>(new OnTimerTimeoutMessage());
         }
     }
 }

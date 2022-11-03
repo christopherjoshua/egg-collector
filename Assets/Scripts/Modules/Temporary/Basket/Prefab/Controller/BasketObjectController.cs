@@ -14,7 +14,7 @@ namespace Collector.Basket
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.name.Contains("Limit"))
+            if (!collision.tag.Contains("Limit"))
                 return;
             bool isCollidedLeft = collision.GetComponent<Collider2D>().transform.position.x < gameObject.transform.position.x;
             if (isCollidedLeft)

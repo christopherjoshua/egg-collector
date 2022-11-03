@@ -18,8 +18,6 @@ namespace Collector.Basket
         private float _baseSpeed = 1;
         private List<float> _speedList = new List<float>();
 
-        public UnityEvent<GameObject> OnFailCatchEgg;
-
         public void OnDirectionKeyPressed(Direction direction)
         {
             int _targetDirection = ((int)direction - 1) * -1;

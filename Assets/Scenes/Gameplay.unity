@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 90481366}
   m_Layer: 5
   m_Name: '[Limit] Limiter Egg'
-  m_TagString: Untagged
+  m_TagString: Limit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +247,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -261,7 +261,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 700, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &90481367
 MonoBehaviour:
@@ -344,10 +344,10 @@ RectTransform:
   m_Father: {fileID: 1039060446}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -90}
+  m_SizeDelta: {x: -140, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &269917284
 MonoBehaviour:
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 454779327}
   m_Layer: 5
   m_Name: '[Limit] Limiter Left'
-  m_TagString: Untagged
+  m_TagString: Limit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 826887071}
   m_Layer: 5
   m_Name: '[Limit] Limiter Right'
-  m_TagString: Untagged
+  m_TagString: Limit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1550,6 +1550,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 843806160990882181, guid: 75a8410751b1a7f46a89e1faa3db9fb2, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 843806160990882183, guid: 75a8410751b1a7f46a89e1faa3db9fb2, type: 3}
       propertyPath: _eggLimiter
       value: 
@@ -1562,6 +1566,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1076117491293763126, guid: f6ebdc7d9e55c974a9b44715f938e168, type: 3}
+    - target: {fileID: 843806162260967977, guid: 75a8410751b1a7f46a89e1faa3db9fb2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 843806162260967978, guid: 75a8410751b1a7f46a89e1faa3db9fb2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 120
@@ -1810,6 +1818,10 @@ PrefabInstance:
       propertyPath: _timerText
       value: 
       objectReference: {fileID: 1558405978}
+    - target: {fileID: 7111301728811083886, guid: 4af93e4275819c54887932a13b0e6ea3, type: 3}
+      propertyPath: InitialTime
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7350155514370865910, guid: 4af93e4275819c54887932a13b0e6ea3, type: 3}
       propertyPath: m_Name
       value: '[Text] Timer Text'

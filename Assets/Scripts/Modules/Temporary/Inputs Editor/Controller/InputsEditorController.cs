@@ -6,49 +6,53 @@ using Agate.MVC.Base;
 using static Types;
 using Collector.Inputs;
 
-public class InputsEditorController : ObjectController<InputsEditorController, InputsEditorModel, IInputsEditorModel, InputsEditorView>
+namespace Collector.InputsEditor
 {
-    private InputsController _inputs;
-    public override IEnumerator Finalize()
+    public class InputsEditorController : ObjectController<InputsEditorController, InputsEditorModel, IInputsEditorModel, InputsEditorView>
     {
-        yield return base.Finalize();
-        _model.SetKeyInputs(_inputs.GetInputsSetting());
-    }
-    public override void SetView(InputsEditorView view)
-    {
-        base.SetView(view);
-        _view.OnMapKey += OnMapKey;
-    }
-
-    public void DisableRemap()
-    {
-        _view.ExitRemap();
-    }
-
-    private void OnMapKey(Direction direction, KeyCode keyCode)
-    {
-        if(_model.InputsSettings.ContainsKey(direction))
+        private InputsController _inputs;
+        public override IEnumerator Finalize()
         {
-            // check if button is already used, switch them
-            if(_model.InputsSettings.ContainsValue(keyCode))
+            yield return base.Finalize();
+            _model.SetKeyInputs(_inputs.GetInputsSetting());
+        }
+        public override void SetView(InputsEditorView view)
+        {
+            base.SetView(view);
+            _view.OnMapKey += OnMapKey;
+        }
+
+        public void DisableRemap()
+        {
+            _view.ExitRemap();
+        }
+
+        private void OnMapKey(Direction direction, KeyCode keyCode)
+        {
+            if (_model.InputsSettings.ContainsKey(direction))
             {
-                KeyCode dupeKeycode = keyCode;
-                Direction dupeDirection = Direction.LEFT;
-                foreach (KeyValuePair<Direction, KeyCode> item in _model.InputsSettings)
+                // check if button is already used, switch them
+                if (_model.InputsSettings.ContainsValue(keyCode))
                 {
-                    if(direction == item.Key)
+                    KeyCode dupeKeycode = keyCode;
+                    Direction dupeDirection = Direction.LEFT;
+                    foreach (KeyValuePair<Direction, KeyCode> item in _model.InputsSettings)
                     {
-                        dupeKeycode = item.Value;
+                        if (direction == item.Key)
+                        {
+                            dupeKeycode = item.Value;
+                        }
+                        if (keyCode == item.Value)
+                        {
+                            dupeDirection = item.Key;
+                        }
                     }
-                    if(keyCode == item.Value)
-                    {
-                        dupeDirection = item.Key;
-                    }
+                    _model.UpdateKeySettings(dupeDirection, dupeKeycode);
                 }
-                _model.UpdateKeySettings(dupeDirection, dupeKeycode);
+                _model.UpdateKeySettings(direction, keyCode);
+                _inputs.UpdateInputsSetting(_model.InputsSettings);
             }
-            _model.UpdateKeySettings(direction, keyCode);
-            _inputs.UpdateInputsSetting(_model.InputsSettings);
         }
     }
+
 }

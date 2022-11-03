@@ -9,6 +9,7 @@ using Collector.Movement;
 using Collector.Score;
 using Collector.Timer;
 using Collector.EggGenerator;
+using Collector.GameFlow;
 
 namespace Collector.Gameplay
 {
@@ -19,6 +20,7 @@ namespace Collector.Gameplay
         private MovementController _movement;
         private ScoreController _score;
         private TimerController _timer;
+        private GameFlowController _gameFlow;
         public override string SceneName => "Gameplay";
 
         protected override ILoad GetLoader()
@@ -33,7 +35,10 @@ namespace Collector.Gameplay
 
         protected override IConnector[] GetSceneConnectors()
         {
-            return null;
+            return new IConnector[]
+            {
+                new GameplayConnector(),
+            };
         }
 
         protected override IController[] GetSceneDependencies()
@@ -45,6 +50,7 @@ namespace Collector.Gameplay
                 new BasketController(),
                 new TimerController(),
                 new ScoreController(),
+                new GameFlowController(),
                };
         }
 

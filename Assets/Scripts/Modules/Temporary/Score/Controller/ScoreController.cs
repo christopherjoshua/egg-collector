@@ -16,10 +16,10 @@ namespace Collector.Score
             // Set how much to add score and the bonus per combo
             _model.AddScore = _view.AddScore;
             _model.BonusScore = _view.BonusScore;
-            _view.OnForceAddScore += UpdateScore;
+            _view.OnForceAddScore += RaiseScore;
         }
 
-        public void UpdateScore()
+        public void RaiseScore()
         {
             // get the current score, 
             // add addscore value
@@ -32,6 +32,11 @@ namespace Collector.Score
             score += _model.AddScore + (combo * _model.BonusScore);
             _model.UpdateCombo(combo + 1);
             _model.UpdateScore(score);
+        }
+
+        public void ResetCombo()
+        {
+            _model.UpdateCombo(0);
         }
     }
 }

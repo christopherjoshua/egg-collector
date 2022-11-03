@@ -5,6 +5,7 @@ using Agate.MVC.Core;
 using Agate.MVC.Base;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Collector.InputsEditor;
 
 namespace Collector.Home
 {

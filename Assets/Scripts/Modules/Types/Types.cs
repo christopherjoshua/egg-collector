@@ -15,11 +15,17 @@ public class Types
             MoveRight = moveRight;
         }
     }
-    public struct OnTimerTimeout
+    public struct OnTimerTimeoutMessage
     {
     }
-    public struct OnSuccessGetObject
+
+    public struct OnGetObjectMessage
     {
+        public string ObjectType;
+        public OnGetObjectMessage(string objectType)
+        {
+            ObjectType = objectType;
+        }
     }
 
     public enum Direction

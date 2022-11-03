@@ -33,12 +33,12 @@ namespace Collector.Score
         }
 
         // test add score is being update
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                OnForceAddScore.Invoke();
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //        OnForceAddScore.Invoke();
+        //    }
+        //}
     }
 }

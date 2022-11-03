@@ -30,7 +30,12 @@ namespace Collector.Movement
             _view.AttachStoredKeysSetting(_inputs.GetInputsSetting());
             // invoke will be got from basket
             // basket will need inherit this
-            _view.OnKeyDirectionPressed += (Direction direction) => OnKeyDirectionPressed.Invoke(direction);
+            _view.OnKeyDirectionPressed += (Direction direction) => OnKeyDirectionPressed?.Invoke(direction);
+        }
+
+        public void EndMovements()
+        {
+            OnKeyDirectionPressed = null;
         }
     }
 }

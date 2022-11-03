@@ -6,6 +6,7 @@ using Agate.MVC.Base;
 using Collector.Boot;
 using UnityEngine.Events;
 using Collector.Inputs;
+using Collector.InputsEditor;
 
 namespace Collector.Home
 {

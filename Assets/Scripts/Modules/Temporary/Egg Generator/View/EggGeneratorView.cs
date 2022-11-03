@@ -18,6 +18,8 @@ namespace Collector.EggGenerator
 
         public UnityEvent OnTimeToGenerateEgg;
 
+        private List<Coroutine> _generators = new List<Coroutine>();
+
         private float timing = 5;
         private float currtime = 5;
 
@@ -32,7 +34,6 @@ namespace Collector.EggGenerator
         }
 
         private void InitializeEggs(List<EggController> eggList) {
-            if(eggList == null || eggList.Count <= 0)
             foreach(EggController egg in eggList)
             {
                 if(egg.IsActive && !egg.gameObject.activeSelf)
@@ -42,14 +43,34 @@ namespace Collector.EggGenerator
             }
         }
 
-        private void Update()
+        public void StartGenerators()
         {
-            if(currtime <= 0)
+            for (int q = 0; q < 3; q++)
             {
-                currtime = timing;
-                OnTimeToGenerateEgg?.Invoke();
+                float delay = Random.Range(1.5f, 3f);
+                Coroutine _eggGeneration = StartCoroutine(EggGeneratorCoroutine(delay, () => { OnTimeToGenerateEgg.Invoke(); }));
+                _generators.Add(_eggGeneration);
             }
-            currtime -= Time.deltaTime;
+        }
+
+        public void StopGenerators()
+        {
+            foreach(Coroutine generator in _generators)
+            {
+                StopCoroutine(generator);
+            }
+            _generators.Clear();
+        }
+
+        private IEnumerator EggGeneratorCoroutine(float delayDuration, UnityAction callback = null)
+        {
+            float delay = delayDuration;
+            while (true)
+            {
+                yield return new WaitForSeconds(delay);
+                delay = Random.Range(1.5f, 3f);
+                callback?.Invoke();
+            }
         }
     }
 }
