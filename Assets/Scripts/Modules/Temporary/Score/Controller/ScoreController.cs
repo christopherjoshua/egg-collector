@@ -19,6 +19,11 @@ namespace Collector.Score
             _view.OnForceAddScore += RaiseScore;
         }
 
+        public int GetScore()
+        {
+            return _model.Score;
+        }
+
         public void RaiseScore()
         {
             // get the current score, 

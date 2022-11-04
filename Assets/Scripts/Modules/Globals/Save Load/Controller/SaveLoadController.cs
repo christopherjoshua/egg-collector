@@ -15,4 +15,9 @@ public class SaveLoadController : DataController<SaveLoadController, SaveLoadMod
     {
         _model.SaveInputDictionary(dictionary);
     }
+
+    public bool SaveHighScore(int score)
+    {
+        return _model.SaveHighScore(score);
+    }
 }

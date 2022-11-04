@@ -82,13 +82,13 @@ namespace Collector.EggGenerator
 
         public void StartGenerators()
         {
+            _generatorStarted = true;
             for (int q = 0; q < GeneratorCount; q++)
             {
                 float delay = Random.Range(MinInitialDelay, MaxInitialDelay) + (AdditionalDelay * q);
                 Coroutine _eggGeneration = StartCoroutine(EggGeneratorCoroutine(delay, () => { OnTimeToGenerateEgg.Invoke(); }));
                 _generators.Add(_eggGeneration);
             }
-            _generatorStarted = true;
         }
 
         public void StopGenerators()

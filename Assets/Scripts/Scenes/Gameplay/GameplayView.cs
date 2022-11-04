@@ -8,6 +8,7 @@ using Collector.Movement;
 using Collector.Score;
 using Collector.Timer;
 using Collector.EggGenerator;
+using Collector.GameFlow;
 
 namespace Collector.Gameplay
 {
@@ -18,5 +19,6 @@ namespace Collector.Gameplay
         public MovementView MovementView;
         public TimerView TimerView;
         public ScoreView ScoreView;
+        public GameFlowView GameFlowView;
     }
 }

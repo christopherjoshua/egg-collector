@@ -27,7 +27,7 @@ namespace Collector.Score
 
         protected override void UpdateRenderModel(IScoreModel model)
         {
-            _scoreText.text = string.Format("{0}", model.Score);
+            _scoreText.text = string.Format("{0:n0}", model.Score);
             _comboText.text = model.Combo > 1 ? string.Format("{0} x Combo!", model.Combo) : string.Empty;
             return;
         }

@@ -18,4 +18,13 @@ public class SaveLoadModel : BaseModel
         PlayerPrefs.SetString("InputsSetting", saveData);
         PlayerPrefs.Save();
     }
+    public bool SaveHighScore(int score)
+    {
+        int highScore = PlayerPrefs.GetInt("HighScore");
+        bool isHighScore = score > highScore;
+        PlayerPrefs.SetInt("HighScore", Mathf.Max(score, highScore));
+        PlayerPrefs.Save();
+        return isHighScore;
+
+    }
 }

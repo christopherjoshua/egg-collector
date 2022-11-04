@@ -13,9 +13,8 @@ namespace Collector.Timer
         public override void SetView(TimerView view)
         {
             base.SetView(view);
-            _model.SetTime(view.InitialTime);
+            StartTimer();
             view.OnTimeUpdated += UpdateTime;
-            view.IsStarted = true;
         }
 
         private void UpdateTime(float deltaTime)
@@ -30,9 +29,21 @@ namespace Collector.Timer
             _model.SetTime(remainingTime);
         }
 
+        public void StopTimer()
+        {
+            _model.SetTime(0f);
+            _view.IsStarted = false;
+        }
+        public void StartTimer()
+        {
+            _model.SetTime(_view.InitialTime);
+            _view.IsStarted = true;
+        }
+
         private void GameTimeout()
         {
             Publish<OnTimerTimeoutMessage>(new OnTimerTimeoutMessage());
+            StopTimer();
         }
     }
 }

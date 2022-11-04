@@ -66,6 +66,7 @@ namespace Collector.Gameplay
             _basket.SetView(_view.BasketView);
             _timer.SetView(_view.TimerView);
             _score.SetView(_view.ScoreView);
+            _gameFlow.SetView(_view.GameFlowView);
             yield return null;
         }
 
