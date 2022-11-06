@@ -29,7 +29,41 @@ namespace Collector.GameFlow
             view.SetCallbacks(OnPlayAgainButton, OnExitButton);
         }
 
-        public void OnTimeout()
+        public void OnCollectEgg(OnCollectEggMessage message)
+        {
+            if (message.Success)
+            {
+                OnScoreUp();
+            }
+            else
+            {
+                OnComboDown();
+            }
+        }
+
+        public void OnCollectBomb(OnCollectBombMessage message)
+        {
+            if(message.Success)
+            {
+                OnGameOver();
+            }
+        }
+        public void OnTimerTimeout(OnTimerTimeoutMessage message)
+        {
+            OnGameOver();
+        }
+
+        private void OnScoreUp()
+        {
+            _score.RaiseScore();
+        }
+
+        private void OnComboDown()
+        {
+            _score.ResetCombo();
+        }
+
+        private void OnGameOver()
         {
             _egg.StopGenerators();
             _timer.StopTimer();
@@ -38,38 +72,6 @@ namespace Collector.GameFlow
             int currentScore = _score.GetScore();
             bool isHighScore = _saveLoad.SaveHighScore(currentScore);
             _view.ShowGameOverScreen(currentScore, isHighScore);
-        }
-
-        public void OnGetObject(OnGetObjectMessage message)
-        {
-            if(message.CatcherType == "Player")
-            {
-                if (message.ObjectType == "Bomb")
-                {
-                    OnTimeout();
-                }
-                else
-                {
-                    OnScoreUp();
-                }
-            }
-            else if(message.CatcherType == "Limit")
-            {
-                if (message.ObjectType == "Egg")
-                {
-                    OnComboDown();
-                }
-            }
-        }
-
-        public void OnScoreUp()
-        {
-            _score.RaiseScore();
-        }
-
-        public void OnComboDown()
-        {
-            _score.ResetCombo();
         }
 
         public void OnPlayAgainButton ()

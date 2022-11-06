@@ -19,14 +19,20 @@ public class Types
     {
     }
 
-    public struct OnGetObjectMessage
+    public struct OnCollectEggMessage
     {
-        public string CatcherType;
-        public string ObjectType;
-        public OnGetObjectMessage(string catcherType, string objectType)
+        public bool Success;
+        public OnCollectEggMessage(bool success)
         {
-            CatcherType = catcherType;
-            ObjectType = objectType;
+            Success = success;
+        }
+    }
+    public struct OnCollectBombMessage
+    {
+        public bool Success;
+        public OnCollectBombMessage(bool success)
+        {
+            Success = success;
         }
     }
 

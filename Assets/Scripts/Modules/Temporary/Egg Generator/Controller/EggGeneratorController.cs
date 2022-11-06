@@ -45,18 +45,12 @@ namespace Collector.EggGenerator
                 {
                     newEgg = EggController.Instantiate(_view.EggPrefab, _view.EggContainer);
                 }
-                newEgg.OnEggCollided.AddListener(SendCollidedMessage);
                 newEgg.SetRandomizePosition();
                 newEgg.SetEggActive(true);
                 newEgg.SetEggSpeed(Random.Range(_view.MinEggSpeed, _view.MaxEggSpeed));
                 eggList.Add(newEgg);
             }
             _model.UpdateEggList(eggList);
-        }
-
-        public void SendCollidedMessage(string catcherType, string objectType)
-        {
-            Publish<OnGetObjectMessage>(new OnGetObjectMessage(catcherType, objectType));
         }
 
         public void StopGenerators()

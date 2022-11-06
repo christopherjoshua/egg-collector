@@ -114,9 +114,8 @@ MonoBehaviour:
   OnEggCollided:
     m_PersistentCalls:
       m_Calls: []
-  TagCollidable:
-  - Player
-  - Limit
+  _playerColliderTag: Player
+  _safeColliderTag: Limit
 --- !u!70 &5873597002244585703
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

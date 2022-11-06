@@ -16,23 +16,29 @@ namespace Collector.Gameplay
         protected override void Connect()
         {
             Subscribe<OnTimerTimeoutMessage>(OnTimerTimeout);
-            Subscribe<OnGetObjectMessage>(OnGetObject);
+            Subscribe<OnCollectEggMessage>(OnCollectEgg);
+            Subscribe<OnCollectBombMessage>(OnCollectBomb);
         }
 
         protected override void Disconnect()
         {
             Unsubscribe<OnTimerTimeoutMessage>(OnTimerTimeout);
-            Unsubscribe<OnGetObjectMessage>(OnGetObject);
+            Unsubscribe<OnCollectEggMessage>(OnCollectEgg);
+            Unsubscribe<OnCollectBombMessage>(OnCollectBomb);
         }
 
         private void OnTimerTimeout(OnTimerTimeoutMessage message)
         {
-            _gameFlow.OnTimeout();
+            _gameFlow.OnTimerTimeout(message);
         }
 
-        private void OnGetObject(OnGetObjectMessage message)
+        private void OnCollectEgg(OnCollectEggMessage message)
         {
-            _gameFlow.OnGetObject(message);
+            _gameFlow.OnCollectEgg(message);
+        }
+        private void OnCollectBomb(OnCollectBombMessage message)
+        {
+            _gameFlow.OnCollectBomb(message);
         }
     }
 }

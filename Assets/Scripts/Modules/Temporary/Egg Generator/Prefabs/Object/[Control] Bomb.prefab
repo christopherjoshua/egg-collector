@@ -130,6 +130,5 @@ MonoBehaviour:
   OnEggCollided:
     m_PersistentCalls:
       m_Calls: []
-  TagCollidable:
-  - Player
-  - Limit
+  _playerColliderTag: Player
+  _safeColliderTag: Limit

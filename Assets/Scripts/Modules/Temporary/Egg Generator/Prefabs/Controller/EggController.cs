@@ -4,6 +4,7 @@ using UnityEngine;
 using Agate.MVC.Core;
 using Agate.MVC.Base;
 using UnityEngine.Events;
+using static Types;
 
 namespace Collector.EggGenerator
 {
@@ -16,9 +17,12 @@ namespace Collector.EggGenerator
         private Transform _parent;
         public Transform Parent => _parent ?? transform.parent;
 
-        public UnityEvent<string, string> OnEggCollided;
-
-        public List<string> TagCollidable;
+        [SerializeField]
+        private string _playerColliderTag;
+        public string PlayerColliderTag => _playerColliderTag;
+        [SerializeField]
+        private string _safeColliderTag;
+        public string SafeColliderTag => _safeColliderTag;
 
         public void SetRandomizePosition()
         {
@@ -47,9 +51,14 @@ namespace Collector.EggGenerator
         {
             // on collision, set game object IsActive false
             // and then send message depending on the collider tag
-            if (!TagCollidable.Contains(collision.tag))
-                return;
-            OnEggCollided?.Invoke(collision.tag, gameObject.tag);
+            if(collision.tag == SafeColliderTag)
+            {
+                PublishSubscribe.Instance.Publish<OnCollectEggMessage>(new OnCollectEggMessage(false));
+            }
+            else if(collision.tag == PlayerColliderTag)
+            {
+                PublishSubscribe.Instance.Publish<OnCollectEggMessage>(new OnCollectEggMessage(true));
+            }
 
             SetEggSpeed(0f);
             SetEggActive(false);
