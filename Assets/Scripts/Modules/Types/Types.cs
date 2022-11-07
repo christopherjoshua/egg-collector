@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,16 @@ public class Types
         {
             Success = success;
         }
+    }
+
+    public interface IEggController
+    {
+        string EggObjectType { get; }
+        bool IsActive { get; }
+        float Speed { get; }
+        void SetEggActive(bool isActive);
+        void SetRandomizePosition();
+        void SetEggSpeed(float speed);
     }
 
     public enum Direction

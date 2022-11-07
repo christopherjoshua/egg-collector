@@ -8,14 +8,20 @@ using static Types;
 
 namespace Collector.EggGenerator
 {
-    public class EggController : MonoBehaviour
+    public class EggController : MonoBehaviour, IEggController
     {
+
+
         private bool _isActive;
         public bool IsActive => _isActive;
         private float _speed;
         public float Speed => _speed;
         private Transform _parent;
         public Transform Parent => _parent ?? transform.parent;
+
+        [SerializeField]
+        private string _eggObjectType;
+        public string EggObjectType => _eggObjectType;
 
         [SerializeField]
         private string _playerColliderTag;

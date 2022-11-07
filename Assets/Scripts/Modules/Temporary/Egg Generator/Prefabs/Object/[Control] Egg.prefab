@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7012610335958431652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111,9 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366f489fac4b78a4aaef166284eb1101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEggCollided:
-    m_PersistentCalls:
-      m_Calls: []
+  _eggObjectType: Egg
   _playerColliderTag: Player
   _safeColliderTag: Limit
 --- !u!70 &5873597002244585703

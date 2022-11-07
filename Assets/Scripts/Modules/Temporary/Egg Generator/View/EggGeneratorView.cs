@@ -4,11 +4,22 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using UnityEngine.Events;
+using static Types;
+using System;
+using Random = UnityEngine.Random;
 
 namespace Collector.EggGenerator
 {
     public class EggGeneratorView : ObjectView<IEggGeneratorModel>
     {
+        [Serializable]
+        public struct EggObjectProps
+        {
+            public string Name;
+            public EggController ObjectPrefab;
+            public int ObjectDropWeight;
+        }
+
         [Header("Game Objects")]
         [SerializeField]
         private EggController _eggPrefab;
@@ -27,7 +38,7 @@ namespace Collector.EggGenerator
         public int GeneratorCount => _generatorCount;
         private bool _generatorStarted;
 
-        [Header("Egg Properties")]
+        [Header("Object Drop Properties")]
         [SerializeField]
         private float _minEggSpeed;
         [SerializeField]
@@ -51,10 +62,11 @@ namespace Collector.EggGenerator
         public float AdditionalDelay => _additionalDelay;
 
 
-        [Header("Bomb Properties")]
+        [Header("Objects List and Properties")]
+
         [SerializeField]
-        private float _bombPercentRate;
-        public float BombPercentRate => _bombPercentRate;
+        private List<EggObjectProps> _dropObjectList = new List<EggObjectProps>();
+        public List<EggObjectProps> DropObjectList => _dropObjectList;
 
         private List<Coroutine> _generators = new List<Coroutine>();
 
@@ -70,10 +82,10 @@ namespace Collector.EggGenerator
             InitializeEggs(model.EggList);
         }
 
-        private void InitializeEggs(List<EggController> eggList) {
+        private void InitializeEggs(List<IEggController> eggList) {
             foreach(EggController egg in eggList)
             {
-                if(egg.IsActive && !egg.gameObject.activeSelf)
+                if (egg.IsActive && !egg.gameObject.activeSelf)
                 {
                     egg.gameObject.SetActive(true);
                 }

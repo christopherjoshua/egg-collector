@@ -1413,6 +1413,34 @@ PrefabInstance:
       propertyPath: _generatorCount
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.data[0].Name
+      value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.data[1].Name
+      value: Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.data[0].ObjectPrefab
+      value: 
+      objectReference: {fileID: 3745164636507672546, guid: 14732535d44a7ff42ad2ac2f09abd9fb, type: 3}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.data[1].ObjectPrefab
+      value: 
+      objectReference: {fileID: 5629218339193561312, guid: e8b67bc1cfe2fdb498beaa77ca221d8b, type: 3}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.data[0].ObjectDropWeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
+      propertyPath: _dropObjectList.Array.data[1].ObjectDropWeight
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3368106081205619934, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
