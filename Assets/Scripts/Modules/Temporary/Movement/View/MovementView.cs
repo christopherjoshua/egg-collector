@@ -26,7 +26,7 @@ namespace Collector.Movement
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (Input.anyKey)
             {

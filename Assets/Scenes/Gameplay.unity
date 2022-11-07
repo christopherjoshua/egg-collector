@@ -998,7 +998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 843806160990882183, guid: 75a8410751b1a7f46a89e1faa3db9fb2, type: 3}
       propertyPath: _baseSpeed
-      value: 3
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 843806160990882183, guid: 75a8410751b1a7f46a89e1faa3db9fb2, type: 3}
       propertyPath: _eggLimiter
@@ -1403,11 +1403,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
       propertyPath: _maxEggSpeed
-      value: 5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
       propertyPath: _minEggSpeed
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 3368106080165360684, guid: 8265d04a279818d4c96baa5138788a8e, type: 3}
       propertyPath: _generatorCount
